@@ -24,7 +24,7 @@ print("⏳ Loading sentence-transformers model...")
 model = SentenceTransformer("all-MiniLM-L6-v2")
 print("✅ Model loaded!")
 
-MONGO_URI  = os.getenv("MONGO_URI", "mongodb+srv://salgotraishita353_db_user:octopus@cluster0.gfbj27x.mongodb.net/cognitiveos")
+MONGO_URI  = os.getenv("MONGO_URI")
 client     = MongoClient(MONGO_URI)
 db         = client["cognitiveos"]
 notes_col  = db["notes"]
