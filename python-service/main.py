@@ -1,5 +1,7 @@
-from __future__ import annotations
 import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+from __future__ import annotations
+
 from typing import List
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
