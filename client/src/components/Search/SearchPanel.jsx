@@ -40,7 +40,8 @@ export default function SearchPanel() {
 const embedAllNotes = async () => {
   setEmbedding(true);
   try {
-    const res = await fetch("/api/search/embed-all", {
+    const baseUrl = process.env.REACT_APP_API_URL || "";
+    const res = await fetch(`${baseUrl}/api/search/embed-all`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,13 +52,11 @@ const embedAllNotes = async () => {
     const data = await res.json();
     if (data.embedded !== undefined) {
       toast.success(`Embedded ${data.embedded} notes!`);
-    } else if (data.error) {
-      toast.error(data.error);
     } else {
       toast.success("Notes embedded!");
     }
   } catch (err) {
-    toast.error("Could not embed notes — " + err.message);
+    toast.error("Could not embed notes");
   } finally { setEmbedding(false); }
 };
 
